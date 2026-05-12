@@ -1,9 +1,12 @@
-cd ~/Desktop/vox-chat
 cat > app/page.tsx << 'EOF'
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { supabase } from '@/lib/supabase'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 interface Message {
   id: number
@@ -72,7 +75,6 @@ export default function Home() {
             .eq('id', payload.new.user_id)
             .single()
           
-          // FIXED: Properly typed message object
           const newMessageObj: Message = {
             id: payload.new.id,
             content: payload.new.content,
@@ -217,7 +219,6 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-gray-900 to-gray-800">
-      {/* Sidebar */}
       <div className="hidden md:flex w-80 bg-gray-900/50 backdrop-blur border-r border-white/10 flex-col">
         <div className="p-6 border-b border-white/10 bg-gradient-to-r from-indigo-600/20 to-purple-600/20">
           <div className="flex items-center gap-3">
@@ -258,9 +259,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Main Chat Area */}
       <div className="flex-1 flex flex-col">
-        {/* Header */}
         <div className="bg-gray-900/50 backdrop-blur border-b border-white/10 px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
@@ -279,7 +278,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Messages */}
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
@@ -319,7 +317,6 @@ export default function Home() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input area */}
         <div className="bg-gray-900/50 backdrop-blur border-t border-white/10 p-4">
           <div className="flex gap-3">
             <input
