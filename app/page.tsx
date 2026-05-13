@@ -1,5 +1,3 @@
-cd ~/Desktop/vox-chat
-cat > app/page.tsx << 'EOF'
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
@@ -146,7 +144,6 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-800 p-4">
         <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl p-8 w-full max-w-md border border-white/20">
           <div className="text-center mb-8">
-            {/* Your Logo Here */}
             <div className="flex justify-center mb-4">
               <Image 
                 src="/logo.png" 
@@ -235,7 +232,6 @@ export default function Home() {
         <div className="p-6 border-b border-white/10 bg-gradient-to-r from-indigo-600/20 to-purple-600/20">
           <div className="flex items-center gap-3">
             <div className="relative">
-              {/* Logo in sidebar */}
               <div className="w-14 h-14 rounded-full overflow-hidden bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
                 <Image 
                   src="/logo.png" 
@@ -282,7 +278,6 @@ export default function Home() {
         <div className="bg-gray-900/50 backdrop-blur border-b border-white/10 px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
-              {/* Logo in header */}
               <div className="w-8 h-8 rounded-full overflow-hidden">
                 <Image 
                   src="/logo.png" 
@@ -372,4 +367,3 @@ export default function Home() {
     </div>
   )
 }
-EOF
