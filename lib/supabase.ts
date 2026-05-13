@@ -1,6 +1,3 @@
-cd ~/Desktop/vox-chat
-mkdir -p lib
-cat > lib/supabase.ts << 'EOF'
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -11,9 +8,3 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
-EOF
-
-# Add and commit the file
-git add lib/supabase.ts
-git commit -m "Add supabase client library"
-git push origin main
