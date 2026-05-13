@@ -1,7 +1,9 @@
+cd ~/Desktop/vox-chat
 cat > app/page.tsx << 'EOF'
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import Image from 'next/image'
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -144,9 +146,19 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-800 p-4">
         <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl p-8 w-full max-w-md border border-white/20">
           <div className="text-center mb-8">
-            <div className="text-7xl mb-3 animate-bounce">🎙️</div>
-            <h1 className="text-4xl font-bold text-white">Vox</h1>
-            <p className="text-white/60 mt-2">Premium real-time messaging</p>
+            {/* Your Logo Here */}
+            <div className="flex justify-center mb-4">
+              <Image 
+                src="/logo.png" 
+                alt="Vox Logo" 
+                width={100} 
+                height={100}
+                className="animate-bounce"
+                priority
+              />
+            </div>
+            <h1 className="text-3xl font-bold text-white mt-2">Welcome to Vox</h1>
+            <p className="text-white/60 mt-2">Premium real-time messaging & calling</p>
           </div>
 
           <form onSubmit={handleAuth} className="space-y-4">
@@ -223,8 +235,15 @@ export default function Home() {
         <div className="p-6 border-b border-white/10 bg-gradient-to-r from-indigo-600/20 to-purple-600/20">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg">
-                {displayName?.charAt(0).toUpperCase()}
+              {/* Logo in sidebar */}
+              <div className="w-14 h-14 rounded-full overflow-hidden bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <Image 
+                  src="/logo.png" 
+                  alt="Vox Logo" 
+                  width={56} 
+                  height={56}
+                  className="object-cover"
+                />
               </div>
               <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-gray-900"></div>
             </div>
@@ -263,7 +282,16 @@ export default function Home() {
         <div className="bg-gray-900/50 backdrop-blur border-b border-white/10 px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <span className="text-2xl">🎙️</span>
+              {/* Logo in header */}
+              <div className="w-8 h-8 rounded-full overflow-hidden">
+                <Image 
+                  src="/logo.png" 
+                  alt="Vox Logo" 
+                  width={32} 
+                  height={32}
+                  className="object-cover"
+                />
+              </div>
               <h1 className="text-xl font-bold text-white">Vox Pro</h1>
               <span className="text-xs bg-indigo-600/50 text-indigo-200 px-2 py-0.5 rounded-full ml-2">
                 Real-time
